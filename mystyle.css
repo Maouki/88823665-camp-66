@@ -1,0 +1,85 @@
+/* mystyle */
+
+h1 {
+    font-size: 50px;
+    color : rgb(255, 255, 255);
+}
+h1, .myh1{
+    font-size: 16pt;
+    margin: 25px;
+    padding: 10px 50px 20px 50px;
+    border-left: 2px solid rgb(255, 255, 255);
+}
+h1:hover{
+
+    color :rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255) ;
+
+    text-shadow: 
+    0 0 5px #fff,
+    0 0 7px #fff,
+    0 0 10px rgb(92, 170, 235),
+    0 0 12px rgb(76, 170, 207),
+    0 0 13px rgb(75, 171, 227)
+    
+}
+body{
+    color: aliceblue;
+    
+    background:url(BG.jpg);
+    background-repeat:no-repeat ;
+    background-attachment: fixed;
+    
+    background-size: cover;    
+    font-family: 'Kanit';
+}
+h2{
+    font-weight: 170;
+    color: aliceblue;
+    font-family: 'Kanit';
+    font-size: 10pt;
+
+}
+input[type="text"]:active,textarea:active{
+    border: 3px solid rgb(200, 41, 200);
+}
+.neon{
+    font-size: 40px;
+    font-weight: 150;
+
+    text-shadow: 
+    0 0 5px #fff,
+    0 0 7px #fff,
+    0 0 10px rgb(193, 80, 164),
+    0 0 12px rgb(189, 45, 153),
+    0 0 13px rgb(213, 26, 167)
+    
+    ;
+
+}
+
+.neon span{
+    animation: flicker 1000ms linear;
+}
+.neon .delay1{
+    animation-delay: 0.8s;
+}
+.neon .delay2{
+    animation-delay: 1.4s;
+}
+.neon .delay3{
+    animation-delay: 1.8s;
+}
+@keyframes flicker {
+    0% {opacity: 0;}
+    10% {opacity: 1;}
+    20% {opacity: 0;}
+    40% {opacity: 1;}
+    50% {opacity: 0;}
+    60% {opacity: 1;}
+    80% {opacity: 0;}
+    100% {opacity: 1;}
+   
+
+
+}
