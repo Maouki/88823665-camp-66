@@ -2,31 +2,31 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/login',
-[LoginController::class,'index']);
+    [LoginController::class, 'login']);
 
 Route::get('/register',
-[RegisterController::class,'index']);
+    [RegisterController::class, 'register']);
 
-Route::get('/home',
-[HomeController::class,'index']);
-
-Route::get('/',
-[HomeController::class,'index']);
-
-
-Route:: get('/mycontroller/{id?}',
+Route::get('/mycontroller/{id?}',
     [MyController::class, 'myfunction']);
 
-Route:: post('/mycontroller/{id?}',
+Route::post('/mycontroller/{id?}',
     [MyController::class, 'myfunction']);
 
 Route::get('/', function () {
-    return VieW('home');
+    return view('home');
 });
 
-Route::get('/hello/{id?}', function ($val = "") {
+Route::get('/home',
+    [HomeController::class, 'home']);
 
-    return "<h1>Hello World!$val</h1>";
+
+Route::get('/hello{/id?}',
+    function ($val =""){
+    return "<h1>Hello World! $val</h1>";
 });
