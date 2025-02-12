@@ -13,14 +13,23 @@ Route::get('/login',
 Route::get('/register',
     [RegisterController::class, 'regis']);
 
+Route::get('/home',
+    [HomeController::class, 'House']);
+
+Route::get('/',
+    [HomeController::class, 'House']);
+
+Route::post('/register',
+    [RegisterController::class, 'create']);
+
+
 Route::get('/mycontroller/{id?}',
     [MyController::class, 'myfunction']);
 
 Route::post('/mycontroller/{id?}',
     [MyController::class, 'myfunction']);
 
-    Route::post('/register',
-    [RegisterController::class, 'create']);
+
 
 Route::get('/users' , [UserController::class , 'index']);
 
@@ -35,8 +44,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/home',
-    [HomeController::class, 'House']);
+
 
 
 Route::get('/hello{/id?}',

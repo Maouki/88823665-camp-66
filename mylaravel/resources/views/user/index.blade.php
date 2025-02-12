@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-12">
       <div class="card mb-12">
-        <div class="card-header"><h3 class="card-title">Bordered Table</h3></div>
+        <div class="card-header"><h3 class="card-title"></h3></div>
         <!-- /.card-header -->
         <div class="card-body">
           <table class="table table-bordered">
@@ -17,28 +17,24 @@
               </tr>
             </thead>
             <tbody>
-            <?php foreach ($users as $index => $user){?>
-
-              <tr class="align-middle">
-                <td>{{ $index+1 }}</td>
-                <td>{{ $user->name}}</td>
-                <td>{{ $user->email}}}</td>
-                <td>
-                    <a href="{{url('/user/'.$user->id)}}">
-                    <button class="btn btn-warning">Edit</button>
-                    </a>
-                    <form action="{{url('/user')}}" method="post">
-                        @csrf
-                        @method('delete')
-                    <input type="hidden" name="id" value="{{$user->id}}">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-              </tr>
-            <?php } ?>
-
-
-
+                <?php foreach ($users as $index => $user) { ?>
+                    <tr class="align-middle">
+                        <td>{{ $index + 1}}.</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email}}</td>
+                        <td>
+                            <a href="{{ url('/user/'.$user->id) }}">
+                            <button class="btn btn-warning"> Edit </button>
+                            </a>
+                            <form action="{{ url('user') }}" method="post" style="display:inline" onsubmit="clickme(event)">
+                                @csrf
+                                @method('delete')
+                                <input type="hidden" name="id" value="{{$user->id}}">
+                                <button class="btn btn-danger" type="submit"> Delete </button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php } ?>
             </tbody>
           </table>
         </div>
@@ -54,8 +50,29 @@
         </div>
       </div>
       <!-- /.card -->
-
     </div>
 </div>
 @endsection
+@section('scripts')
+<script>
+   function clickme(event) {
+        event.preventDefault();
+        Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            event.target.submit(); // ให้ฟอร์มส่งข้อมูลเมื่อกดยืนยัน
+        }
+    });
+}
+    $(document).ready(function(){
+    });
 
+</script>
+@endsection
